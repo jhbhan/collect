@@ -1,4 +1,4 @@
-.RegularPayments {
+.Room {
     text-align: center;
     display: flex;
     justify-content: space-around;
@@ -24,6 +24,19 @@
     flex-direction: column;
     align-items: center;
     margin-top: 70px;
+}
+
+.LinkDetail {
+    color: black;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+}
+
+.card .card-content {
+    height: 150px;
 }
 
 .hello {

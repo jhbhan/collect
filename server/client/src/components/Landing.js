@@ -1,21 +1,46 @@
-import React from 'react';
-import RegularPayments from './RegularPayments';
+import React, { Component } from 'react';
 
 
-const Landing = () => {
-    return (
-        //two curly braces here. 1 to indicate we're using js
-        //the other to indicate the object we're passing throug
-        <div className="Landing">
-           <RegularPayments type="Rent" />
+import {connect} from 'react-redux';
+import * as actions from '../action';
+import NewRoom from './NewRoom';
 
-           <RegularPayments type="Utilities" />
+import Room from './Room';
 
-           <RegularPayments type="Internet" />
-           
+class Landing extends Component {
 
-        </div>
-    )
+    componentDidMount(){
+        this.props.getLinks();
+    }
+    renderContent(){
+
+        if(this.props.link != null){
+            console.log(this.props.link);
+            const zoomlist = this.props.link.map((link, i) =>
+                <Room key={i} link={link}></Room>
+            );
+        return(
+                <>
+                {zoomlist}
+                </>
+            )
+        }
+    }
+
+    render(){
+
+        return (
+            //two curly braces here. 1 to indicate we're using js
+            //the other to indicate the object we're passing throug
+            <div className="Landing row">
+                {this.renderContent()}
+                <NewRoom></NewRoom>
+            </div>
+        )
+    }
+}
+function mapStatetoProps({auth,link}){
+    return {auth, link};
 }
 
-export default Landing;
+export default connect(mapStatetoProps,actions) (Landing);
