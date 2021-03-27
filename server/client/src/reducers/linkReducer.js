@@ -15,13 +15,10 @@ const linkReducer = (state = initialState, action)=>{
         case GET_LINKS:
             return  action.payload || false;
         case ADD_LINK:
-            console.log(`currentstate: ${state}, payload: ${action.payload}`)
             return [...state, action.payload] || false;
         case DELETE_LINK:
-            console.log(`currentstate: ${state}, payload: ${action.payload}`)
             return [...state, action.payload] || false;
         case EDIT_LINK:
-            console.log(`currentstate: ${state}, payload: ${action.payload}`)
             return [...state, action.payload] || false;
         default:
             return state;

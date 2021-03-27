@@ -8,13 +8,15 @@ function LinkDetail (props)  {
     
     
     const handleSubmit = (evt) => {
+
         evt.preventDefault();
         if(edit){
             const obj = {id,title,description,url};
             props.editLink(obj);
         }
         else{
-            const obj = { title,  description,  url};
+            const userId = props.auth._id;
+            const obj = {userId, title,  description,  url};
             props.addLink(obj);
         }
     }
@@ -71,4 +73,10 @@ function LinkDetail (props)  {
     );
 }
 
-export default connect(null,actions) (LinkDetail);
+
+function mapStatetoProps({auth}){
+    return {auth};
+}
+
+
+export default connect(mapStatetoProps,actions) (LinkDetail);

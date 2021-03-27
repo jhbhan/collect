@@ -21,11 +21,11 @@ class Room extends Component{
                       state: this.props.link
                     }}
                     >
-                        <i class="material-icons">edit</i>
+                        <i className="material-icons">edit</i>
                     </Link>
                     <a className="waves-effect btn" target="blank" href={`${this.props.link.url}`}>
-                        <i class="material-icons">open_in_new</i></a>
-                    <a class="waves-effect waves-light btn"><i class="material-icons">delete</i></a>
+                        <i className="material-icons">open_in_new</i></a>
+                    <a className="waves-effect waves-light btn"><i className="material-icons">delete</i></a>
     
                   </div>
                     

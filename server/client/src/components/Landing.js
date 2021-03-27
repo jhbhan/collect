@@ -10,12 +10,11 @@ import Room from './Room';
 class Landing extends Component {
 
     componentDidMount(){
-        this.props.getLinks();
+        this.props.getLinks({userId: this.props.auth._id});
     }
     renderContent(){
 
         if(this.props.link != null){
-            console.log(this.props.link);
             const zoomlist = this.props.link.map((link, i) =>
                 <Room key={i} link={link}></Room>
             );

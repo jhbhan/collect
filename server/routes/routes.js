@@ -10,7 +10,6 @@ app.get(
   passport.authenticate('zoom', { failureRedirect: '/fail' }),
   function(req, res) {
     // Successful authentication
-    console.log("caled back");
     res.redirect(`/?user=${req.user.id}`)
   }
 );
@@ -31,7 +30,6 @@ app.get(
   passport.authenticate("google"),
   (req,res)=>{
       //res has a redirect function 
-      console.log("hellooo");
       res.redirect('/');
   });
 
@@ -53,18 +51,17 @@ app.get('/fail',(req,res) => {
     res.json({ id: 201721 });
 })
 app.get('/main',(req,res) => {
-    console.log("user"+req.query.user);
   res.send(req.user);
 })
 
 app.get('/api/current_user',
   (req,res)=>{
-    console.log("hello");
     res.send("hello");
    });
-app.get('/api/get_links', 
+app.post('/api/get_links', 
   (req,res)=>{
-    Link.find()
+    const filter = { userId : req.body.userId};
+    Link.find(filter)
       .then((result) => {
         res.send(result);
       })
@@ -77,6 +74,7 @@ app.get('/api/get_links',
 app.post('/api/add_link', 
   (req,res)=>{
     const link = new Link({
+      userId: req.body.userId,
       title: req.body.title,
       description : req.body.description,
       url: req.body.url

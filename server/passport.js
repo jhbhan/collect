@@ -38,7 +38,6 @@ passport.use(
                 }) // this returns a promise
             
             if(existingUser){
-                console.log("hello");
                  return done(null,existingUser);//two arguments, error object, user record
             }
             const user = await new User({googleId: profile.id,
@@ -59,9 +58,7 @@ passport.use(new ZoomStrategy({
     callbackURL: keys.zoomRedirectURL
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log("LOGGED IN");
-    console.log(accessToken);
-    console.log(profile);
+
     done(null,profile);
   }
 ));

@@ -12,9 +12,9 @@ const addLink = (linkObj) =>
         const res = await axios.post('/api/add_link', linkObj)//asynchronous
         dispatch({type: ADD_LINK, payload: res.data});
     }
-const getLinks = () =>
+const getLinks = (userId) =>
     async (dispatch) => {
-        const res = await axios.get('/api/get_links')//asynchronous
+        const res = await axios.post('/api/get_links',userId);//asynchronous
         dispatch({type: GET_LINKS, payload: res.data});
     }
 
